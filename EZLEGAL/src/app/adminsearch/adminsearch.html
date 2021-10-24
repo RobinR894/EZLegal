@@ -1,0 +1,97 @@
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item">
+      <img src="../assets/img/logo.png" width="122" height="34">
+    </a>
+
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      <a class="navbar-item" routerLink='../admin'>
+        Home
+      </a>
+      <a class="navbar-item" routerLink='../about'>
+        User Management
+      </a>
+      <a class="navbar-item" routerLink='../admininbox'>
+        Inbox
+      </a>
+      <a class="navbar-item" routerLink='../adminsearch'>
+        search
+      </a>
+    </div>
+
+    <div class="navbar-end">
+      <div class="navbar-item">
+        Admin /
+        <div class="buttons">
+          <a class="button is-light">
+            <strong><a routerLink='../home'>Log off</a></strong>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+<section class="hero is-primary is-bold is-fullheight">
+  
+  <div class="hero-body">
+    <div class="container has-text-centered" >
+      <div class="content" role="main" style="width: 50%;">
+        <div class="card">
+          <div class="form-group">
+            <label for="search-text">Search Text</label>
+            <input type="email" class="form-control" id="search-text" aria-describedby="search-text" 
+              [(ngModel)]="searchText" placeholder="Enter text to search" 
+              autofocus>
+          </div>
+          <ul class="list-group list-group-flush">
+            <!-- results of ngFor is passed to appFilter with argument searchText -->
+            <li class="list-group-item" *ngFor="let c of characters | appFilter: searchText">
+              {{c}}
+            </li>
+          </ul>
+        </div>
+      </div>
+      <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
+
+      <ul id="myUL">
+        <li><a href="#">Consultation for legal information and advice</a></li>
+        <li><a href="#">Consultation to review documents </a></li>
+      
+        <li><a href="#">Mediation, arbitration, or other third party services</a></li>
+        <li><a href="#">Preparation of documents</a></li>
+      
+        <li><a href="#">Representing clients in negotiations</a></li>
+        <li><a href="#">Representing clients in court, arbitration, administrative and legislative hearings</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+<script>
+  function myFunction() {
+    // Declare variables
+    var input, filter, ul, li, a, i, txtValue;
+    input = document.getElementById('myInput');
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("myUL");
+    li = ul.getElementsByTagName('li');
+  
+    // Loop through all list items, and hide those who don't match the search query
+    for (i = 0; i < li.length; i++) {
+      a = li[i].getElementsByTagName("a")[0];
+      txtValue = a.textContent || a.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        li[i].style.display = "";
+      } else {
+        li[i].style.display = "none";
+      }
+    }
+  }
+  </script>

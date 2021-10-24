@@ -1,0 +1,18 @@
+.hero {
+  background-image: url('/assets/img/BG.jpg')
+  !important;
+  background-size:cover;
+  background-position: center center;}
+  
+  .hero-body
+  {
+    color:black; 
+  }
+
+a{
+  text-decoration: none;
+}
+ngb-rating {
+  color: #e4d71f;
+  font-size: 20px;
+}

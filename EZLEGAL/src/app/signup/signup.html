@@ -1,0 +1,144 @@
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" routerLink='../home'>
+      <img src="../assets/img/logo.png" width="122" height="34">
+    </a>
+
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      <a class="navbar-item" routerLink='../home'>
+        Home
+      </a>
+      <a class="navbar-item" routerLink='../about'>
+        About
+      </a>
+      <a class="navbar-item" routerLink='../contact'>
+        Contact
+      </a>
+     <!-- <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More
+        </a>
+
+        <div class="navbar-dropdown">
+          <a class="navbar-item">
+            About
+          </a>
+          <a class="navbar-item" routerLink='./contact'>
+            Contact
+          </a>
+          <hr class="navbar-divider">
+          <a class="navbar-item">
+            Report an issue
+          </a>
+        </div>
+      </div>-->
+    </div>
+
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+          <a class="button is-primary">
+            <strong><a routerLink='../signup'>Sign up</a></strong>
+          </a>
+          <a class="button is-light">
+            <strong><a routerLink='../login'>Log in</a></strong>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<section class="hero is-primary is-bold is-fullheight">
+  <div class="hero-body">
+  <div class="container has-text-centered">
+    <div class="row">
+      <div class="col-md-6 mx-auto p-0">
+        <div class="card">
+            <div class="signup-box">
+              <div class="signup-snip"> <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Sign up</label><input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Sign Up as Lawyer</label>
+                <div class="signup-space">
+                  <div class="signup">
+  <form id="reg" #userRegistrationForm="ngForm" (ngSubmit) = "regSubmit(userRegistrationForm)">
+    <div class="group"> <label for="user" class="label">Email</label><input id="email" class="input" type = "text" name = "email" placeholder = "Email" #email="ngModel" [(ngModel)]="user.email"></div>
+    <div class="group"> <label for="pass" class="label">Password</label><input id="password" class="input" type = "password" name = "password" placeholder = "Password"  #password="ngModel" [(ngModel)]="user.password" required></div>
+    <div class="group"> <label for="user" class="label">FirstName</label><input id="firstname" type = "text" class="input" name = "firstName" placeholder = "FirstName"  #firstName="ngModel" [(ngModel)]="user.firstName"></div>
+    <div class="group"> <label for="user" class="label">Email</label><input id="lastname" type = "text"  class="input" name = "lastName" placeholder = "LastName"  #lastName="ngModel" [(ngModel)]="user.lastName"></div>
+    <div class="group"> <input type="submit" class="button" style="padding: 0px;" value="Create Account"> </div>
+  </form>
+  <div class="hr"></div>
+</div>
+<div class="sign-up-form">
+  <form id="reglwy" #lawyerRegistrationForm="ngForm" (ngSubmit) = "reglwySubmit(lawyerRegistrationForm)">
+  <div class="group"> <label for="user" class="label">Email</label><input id="email" class="input" type = "text" name = "email" placeholder = "Email" #email="ngModel" [(ngModel)]="user.email"></div>
+  <div class="group"> <label for="pass" class="label">Password</label><input id="password" class="input" type = "password" name = "password" placeholder = "Password"  #password="ngModel" [(ngModel)]="user.password" required></div>
+  <div class="group"> <label for="user" class="label">FirstName</label><input id="firstname" type = "text" class="input" name = "firstName" placeholder = "FirstName"  #firstName="ngModel" [(ngModel)]="user.firstName"></div>
+  <div class="group"> <label for="user" class="label">LastName</label><input id="lastname" type = "text"  class="input" name = "lastName" placeholder = "LastName"  #lastName="ngModel" [(ngModel)]="user.lastName"></div>
+  <label for="myfile">Attach Lawyer certificate for vertification</label>
+  <input type="file" id="myfile" name="myfile"><br><br>
+  <div class="group"> <input type="submit" class="button" style="padding: 0px;" value="Create Account"> </div>
+</form>
+  <div class="hr"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</section>
+
+<footer class="footer">
+  <div class="d-flex flex-column h-100">
+    <!-- FOOTER -->
+    <footer class="w-100 py-4 flex-shrink-0">
+      <div class="container py-4">
+          <div class="row gy-4 gx-5">
+              <div class="col-lg-4 col-md-6">
+                  <h5 class="h1 text-black">Follow US</h5>
+                  <table class="table" style="background-color:  rgba(0, 0, 0, 0);">
+                    <tbody style="border:none;">
+                      <tr>
+                        <td><a href="#"><img src="../assets/img/facebook.png" height="32" width="32"></a></td>
+                        <td><a href="#"><img src="../assets/img/IG.png" height="32" width="32"></a></td>
+                        <td><a href="#"><img src="../assets/img/twitter.png" height="32" width="32"></a></td>
+                      </tr>                  
+                    </tbody>
+                  </table>
+              </div>
+              <div class="col-lg-2 col-md-6">
+                  <h5 class="text-black mb-3">Quick links</h5>
+                  <ul class="list-unstyled text-muted">
+                      <li><a routerLink='../home'>Home</a></li>
+                      <li><a routerLink='../about'>About</a></li>
+                      <li><a routerLink='../contact'>Contact Us</a></li>
+                  </ul>
+              </div>
+              <div class="col-lg-4 col-md-6">
+                  <h5 class="text-black mb-3">Newsletter</h5>
+                  <p class="small text-muted">Please enter your emaol address to receive our latest news.</p>
+                  <form action="#">
+                      <div class="input-group mb-3">
+                          <input class="form-control" type="text" placeholder="Recipient's email" aria-label="Recipient's username" aria-describedby="button-addon2">
+                          <button class="btn btn-primary" id="button-addon2" type="button">Send<i class="fas fa-paper-plane"></i></button>
+                      </div>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </footer>
+</div>
+</footer>
+
+

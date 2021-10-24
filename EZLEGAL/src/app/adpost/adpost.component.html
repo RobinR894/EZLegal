@@ -1,0 +1,241 @@
+<nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item">
+        <img src="../assets/img/logo.png" width="122" height="34">
+      </a>
+  
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+  
+    <div id="navbarBasicExample" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" routerLink='../admin'>
+          Home
+        </a>
+        <a class="navbar-item" routerLink='../adpost'>
+          User Management
+        </a>
+        <a class="navbar-item" routerLink='../admininbox'>
+            Inbox
+          </a>
+        <a class="navbar-item" routerLink='../adminsearch'>
+          search
+        </a>
+      </div>
+      <div class="navbar-menu" id="navMenu">
+        <div class="navbar-end">
+            <div class="navbar-item">
+                <form>
+                    <div class="field has-addons">
+                       <div class="control is-expanded">
+                           <input type="search" name="search" class="input" id="search" placeholder="Search" aria-label="Search">
+                       </div>
+                       <div class="control">
+                           <button type="submit" class="button is-info">
+                               Search
+                           </button>
+                       </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+      <div class="navbar-end">
+        <div class="navbar-item">
+          Admin /
+          <div class="buttons">
+            <a class="button is-light">
+              <strong><a routerLink='../home'>Log off</a></strong>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <!--Table-->
+  <section class="hero is-bold is-fullheight">
+  <section class="section">
+    <div class="container">
+        <nav class="breadcrumb" aria-label="breadcrumbs">
+            <ul>
+                <li><a routerLink='../admin'>EZLEGAL</a></li>
+               <li class="is-active">
+                    <a href="#0" aria-current="page">Enquery A</a>   
+                </li> 
+            </ul>
+        </nav>
+        <h2 class="title">Enquery A</h2>
+        <div class="table-responsive">
+            <table class="table is-striped is-bordered is-fullwidth">
+                <thead>
+                    <tr>
+                        <th scope="col">Author</th>
+                        <th scope="col">Message<br><ngb-rating [max]="5" [(rate)]="currentRating" [readonly]="false"></ngb-rating><h5>Current Rating: {{currentRating}}</h5>
+                         
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="author-col">
+                            <div>By <a href="#">Author Name</a></div>
+                        </td>
+                        <td class="post-col">
+                            <div>
+                                <span class="has-text-weight-bold">
+                                    Post Subject : 
+                                </span>
+                                Enquery A
+                            </div>
+                            <div>
+                                <span class="has-text-weight-bold">
+                                    Posted :
+                                </span>
+                                11th October 2021, 21:24
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div>
+                                <span class="has-text-weight-bold">
+                                    Joined :
+                                </span>
+                                9th October 2020
+                            </div>
+                            <div>
+                                <span class="has-text-weight-bold">
+                                    Posts :
+                                </span>
+                                55
+                            </div>
+                        </td>
+                        <td class="content">
+                            <p>
+                                Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah 
+                                Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah 
+                                Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah 
+                                Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah 
+                            </p>
+                            <p>
+                                Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah 
+                                Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah 
+                                Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah 
+                                Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah 
+                                Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah 
+                                Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah 
+
+                            </p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="table-responsive">
+            <table class="table is-striped is-bordered is-fullwidth">
+                <thead>
+                    <tr>
+                        <th scope="col">Author</tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="author-col">
+                            <div>By <a href="#">Author Name</a></div>
+                        </td>
+                        <td class="post-col">
+                            <div>
+                                <span class="has-text-weight-bold">
+                                    Post Subject : 
+                                </span>
+                                Enquery A
+                            </div>
+                            <div>
+                                <span class="has-text-weight-bold">
+                                    Posted :
+                                </span>
+                                11th October 2021, 21:40
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div>
+                                <span class="has-text-weight-bold">
+                                    Joined :
+                                </span>
+                                9th October 2020
+                            </div>
+                            <div>
+                                <span class="has-text-weight-bold">
+                                    Posts :
+                                </span>
+                                55
+                            </div>
+                        </td>
+                        <td class="content">
+                            <p>
+                                Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah 
+                                Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah 
+                                Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah 
+                                Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah 
+                                Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah 
+                                Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah 
+                            </p>
+                            <figure class="image is3by2">
+                                <img src="../assets/img/BG1.jpg">
+                            </figure>
+                            <p>
+                                Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah 
+                                Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah 
+                                Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah 
+                                Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah 
+                                Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah 
+                                Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah 
+                            </p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+                 
+    <!--Pagination-->
+    <nav class="pagination" role="navigation" aria-label="pagination">
+        <a class="pagination-previous" title="This is the first page" disabled>
+          <b>Previous</b>
+          </a>
+          <a class="pagination-next"><b>Next</b></a>
+          <ul class="pagination-list">
+            <li>
+              <a class="pagination-link is-current" aria-label="Page 1" aria-current="page">1</a>
+            </li>
+            <li>
+              <a class="pagination-link" aria-label="Goto page 2">2</a>
+            </li>
+            <li>
+              <a class="pagination-link" aria-label="Goto page 3">3</a>
+            </li>
+          </ul>
+      </nav>
+    
+    <!--Comment form-->
+    <form id="reply">
+        <div class="field">
+            <label class="label" for="comment">
+                Reply to this post
+            </label>
+            <div class="control">
+                <textarea class="textarea" id="comment" rows="10" placeholder="Write your comment here" required></textarea>
+            </div>
+        </div>
+        <button type="reply" class="button is-primary">Reply</button>
+        <button type="reset" class="button is-light">Reset</button>
+        <button type="Lock" class="button is-warning">Lock</button>
+        <button type="Delete" class="button is-danger">Delete</button>
+    </form>
+    </div>
+</section>
+</section>    
+  

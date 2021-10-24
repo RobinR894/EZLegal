@@ -1,0 +1,127 @@
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" routerLink='../home'>
+      <img src="../assets/img/logo.png" width="122" height="34">
+    </a>
+
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      <a class="navbar-item" routerLink='../home'>
+        Home
+      </a>
+      <a class="navbar-item" routerLink='../about'>
+        About
+      </a>
+      <a class="navbar-item" routerLink='../contact'>
+        Contact
+      </a>
+      <!--<div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More
+        </a>
+
+        <div class="navbar-dropdown">
+          <a class="navbar-item">
+            About
+          </a>
+          <a class="navbar-item" routerLink='./contact'>
+            Contact
+          </a>
+          <hr class="navbar-divider">
+          <a class="navbar-item">
+            Report an issue
+          </a>
+        </div>
+      </div>-->
+    </div>
+
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+          <a class="button is-primary">
+            <strong><a routerLink='../signup'>Sign up</a></strong>
+          </a>
+          <a class="button is-light">
+            <strong><a routerLink='../login'>Log in</a></strong>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+<section class="hero is-primary is-bold is-fullheight">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title" style="text-align:center;color:rgb(29, 84, 129)">Contact Us!</h1>
+      <form>
+        <div class="field">
+          <label class="label" style="color:rgb(0, 0, 0);"> Name</label>
+          <input type="text" name="name" class="input" size="8">
+        </div>
+
+        <div class="field">
+          <label class="label" style="color:rgb(0, 0, 0);">Email</label>
+          <input type="email" name="email" class="input">
+        </div>
+
+        <div class="field">
+          <label class="label" style="color:rgb(0, 0, 0);">Your Message</label>
+          <textarea name="message" class="textarea"></textarea>
+        </div>
+        <button type="submit" class="button is-large is-warning">Send!</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="d-flex flex-column h-100">
+   <!-- FOOTER -->
+   <footer class="w-100 py-4 flex-shrink-0">
+    <div class="container py-4">
+        <div class="row gy-4 gx-5">
+            <div class="col-lg-4 col-md-6">
+                <h5 class="h1 text-black">Follow US</h5>
+                <table class="table" style="background-color:  rgba(0, 0, 0, 0);">
+                  <tbody style="border:none;">
+                    <tr>
+                      <td><a href="#"><img src="../assets/img/facebook.png" height="32" width="32"></a></td>
+                      <td><a href="#"><img src="../assets/img/IG.png" height="32" width="32"></a></td>
+                      <td><a href="#"><img src="../assets/img/twitter.png" height="32" width="32"></a></td>
+                    </tr>                  
+                  </tbody>
+                </table>
+            </div>
+            <div class="col-lg-2 col-md-6">
+                <h5 class="text-black mb-3">Quick links</h5>
+                <ul class="list-unstyled text-muted">
+                    <li><a routerLink='../home'>Home</a></li>
+                    <li><a routerLink='../about'>About</a></li>
+                    <li><a routerLink='../contact'>Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <h5 class="text-black mb-3">Newsletter</h5>
+                <p class="small text-muted">Please enter your emaol address to receive our latest news.</p>
+                <form action="#">
+                    <div class="input-group mb-3">
+                        <input class="form-control" type="text" placeholder="Recipient's email" aria-label="Recipient's username" aria-describedby="button-addon2">
+                        <button class="btn btn-primary" id="button-addon2" type="button">Send<i class="fas fa-paper-plane"></i></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</footer>
+</div>
+</footer>
+
+
+

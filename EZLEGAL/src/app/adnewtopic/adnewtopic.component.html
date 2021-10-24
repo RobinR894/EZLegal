@@ -1,0 +1,98 @@
+<nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item">
+        <img src="../assets/img/logo.png" width="122" height="34">
+      </a>
+  
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+  
+    <div id="navbarBasicExample" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" routerLink='../admin'>
+          Home
+        </a>
+        <a class="navbar-item" routerLink='../adpost'>
+          User Management
+        </a>
+        <a class="navbar-item" routerLink='../admininbox'>
+            Inbox
+          </a>
+        <a class="navbar-item" routerLink='../adminsearch'>
+          search
+        </a>
+      </div>
+      <div class="navbar-menu" id="navMenu">
+        <div class="navbar-end">
+            <div class="navbar-item">
+                <form>
+                    <div class="field has-addons">
+                       <div class="control is-expanded">
+                           <input type="search" name="search" class="input" id="search" placeholder="Search" aria-label="Search">
+                       </div>
+                       <div class="control">
+                           <button type="submit" class="button is-info">
+                               Search
+                           </button>
+                       </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+      <div class="navbar-end">
+        <div class="navbar-item">
+          Admin /
+          <div class="buttons">
+            <a class="button is-light">
+              <strong><a routerLink='../home'>Log off</a></strong>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <!--Table-->
+  <section class="hero is-bold is-fullheight">
+  <section class="section">
+    <div class="container">
+        <nav class="breadcrumb" aria-label="breadcrumbs">
+            <ul>
+                <li><a routerLink='../admin'>EZLEGAL</a></li>
+               <li class="is-active">
+                    <a href="#0" aria-current="page">Create a new topic</a>   
+                </li> 
+            </ul>
+        </nav>
+        
+        <!--New Topic Form-->
+        <h2 class="title">Create a new topic</h2>
+        <form id="new-post">
+            <div class="field">
+                <label class="label" for="topic">Topic</label>
+                <div class="control">
+                    <input type="text" class="input" id="input" placeholder="Give your topic a title" required>
+                </div>
+            </div>
+            <div class="field">
+                <label class="label" for="comment">Comment</label>
+                <textarea class="textarea" id="comment" rows="10" placeholder="Write your comment here" required>
+                </textarea>
+            </div>
+            <div class="field">
+                <label class="checkbox">
+                    <input type="checkbox" id="checkbox" value="notification">
+                    Notify me of replies
+                </label>
+            </div>
+            <button type="submit" class="button is-primary">Create Topic</button>
+            <button type="reset" class="button is-light">Reset</button>
+        </form>
+    </div>
+</section>
+</section>    
+  
