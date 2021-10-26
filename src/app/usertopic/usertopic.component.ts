@@ -4,25 +4,55 @@ import { NgForm } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Topic } from '../topic.mode';
 import { Post } from '../post.model';
+import { HttpHeaders } from '@angular/common/http';
+import { CookieService } from 'ngx-cookie-service';
+import { Router } from '@angular/router';
+import { UserService } from '../user.service';
 
+
+var httpOptions = {
+  headers: new HttpHeaders({
+  'Content-Type':  'application/json',
+  'sessionId': '{{usersessionId}}'
+  })
+};
 @Component({
-  selector: 'app-adnewtopic',
-  templateUrl: './adnewtopic.component.html',
+  selector: 'app-usertopic',
+  templateUrl: './usertopic.component.html',
   styleUrls: ['../BG.css'],
   styles:['a:hover {color: red;}']
-})
-export class AdnewtopicComponent implements OnInit {
 
+})
+export class UsertopicComponent implements OnInit {
+  userDisplayType = this.cookieService.get('role') ;
+  usersessionId = this.cookieService.get('sessionId') ;
   topic:Topic;
   post:Post;
 
   constructor(
+    private router:Router, 
+    private cookieService: CookieService,
+    private UserService: UserService,
     private ForumService: ForumService,
     private toastr: ToastrService
     ) {}
 
   ngOnInit(): void {
     this.resetForm();
+    if(this.cookieService.get('role') != "user")
+    {
+      this.router.navigate(['/login']);
+      this.cookieService.deleteAll();
+    }
+    this.usersessionId = this.cookieService.get('sessionId') ;
+    console.log('userhome session id' + this.usersessionId);
+    //alert(this.cookieService.get('role'));
+    httpOptions = {
+      headers: new HttpHeaders({
+      'Content-Type':  'application/json',
+      'sessionId': this.cookieService.get('sessionId')
+      })
+    };
   }
 
   private resetForm(form?:NgForm){
@@ -54,9 +84,14 @@ export class AdnewtopicComponent implements OnInit {
       if (data.postId != null && data.postId != undefined) {
         // this.resetForm(form);
         this.toastr.success("Topic created successfully");
+        this.router.navigate(['/userhome']);
       } else {
         this.toastr.error("Oops, we ran into an error");
       }
     });
+  }
+  deletecookies(){
+    this.cookieService.deleteAll();
+    this.router.navigate(['/home']);
   }
 }

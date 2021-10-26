@@ -15,6 +15,10 @@ import { AdminmessageComponent} from './adminmessage/adminmessage.component';
 import { TestComponent} from './test/test.component';
 import { LawyerhomeComponent } from './lawyerhome/lawyerhome.component';
 import { UserhomeComponent } from './userhome/userhome.component';
+import { LawyerpostComponent } from './lawyerpost/lawyerpost.component';
+import { UserpostComponent } from './userpost/userpost.component';
+import { LawyertopicComponent } from './lawyertopic/lawyertopic.component';
+import { UsertopicComponent } from './usertopic/usertopic.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -32,7 +36,11 @@ const routes: Routes = [
   {path:'adminmessage', component:AdminmessageComponent},
   {path:'test', component:TestComponent},
   {path:'lawyerhome',component:LawyerhomeComponent},
-  {path:'userhome',component:UserhomeComponent}
+  {path:'userhome',component:UserhomeComponent},
+  {path:'lawyerpost',component:LawyerpostComponent},
+  {path:'userpost',component:UserpostComponent},
+  {path:'lawyertopic',component:LawyertopicComponent},
+  {path:'usertopic',component:UsertopicComponent}
 ];
 
 @NgModule({
@@ -41,4 +49,5 @@ const routes: Routes = [
 })
 export class AppRoutingModule { }
 export const ArrayOfComponents = [HomeComponent,AboutComponent,ContactComponent,SignupComponent,LoginComponent,AdminComponent,AdminsearchComponent,
-  AdpostComponent,AdnewtopicComponent,AdmininboxComponent,AdmininboxnmComponent,AdminmessageComponent,TestComponent,LawyerhomeComponent,UserhomeComponent]
+  AdpostComponent,AdnewtopicComponent,AdmininboxComponent,AdmininboxnmComponent,AdminmessageComponent,TestComponent,LawyerhomeComponent,UserhomeComponent,
+  LawyerpostComponent,UserpostComponent,LawyertopicComponent,UsertopicComponent]

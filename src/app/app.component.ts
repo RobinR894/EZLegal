@@ -13,37 +13,20 @@ import { HttpClient } from '@angular/common/http';
 })
 
 export class AppComponent {
-  data:any;
-
+  //data:any;
+ forum:any[];
   title = 'EZLEGAL';
-  //getdata calling
-  
-  /*constructor(private user:UsersService) {}
-   ngOnInit(){
-    this.user.getData().subscribe(result=>
-      {
-        console.warn("result",result)
-        this.data=result
-      })
-   }*/
-   postId:any;
 
-    constructor(private http: HttpClient) { }
-
+    constructor(private UserService: UserService, private http: HttpClient) { }
     ngOnInit() {
-      this.http.post<any>('http://localhost:58080/user/user/getbyemail', { email: "test13455@test.com" }).subscribe(data => {
-          this.postId = data.exist;
-      })
-  }
+     // this.getForums();
+    }
+   /* getForums() {
+      this.UserService.getForums()
+        .subscribe(data => {
+          console.log(data);
+          this.forum=data.forumList;
+        });
+    }*/
  
-  searchText = '';
-  characters = [
-    'Ant-Man',
-    'Aquaman',
-    'Asterix',
-    'The Atom',
-    'The Avengers',
-    'Batgirl',
-    'Batman',
-    'Batwoman',]
 }

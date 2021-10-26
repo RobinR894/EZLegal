@@ -57,7 +57,7 @@
           <nav class="breadcrumb" aria-label="breadcrumbs">
               <ul>
                   <li>
-                      <a routerLink='../admin'>EZLEGAL</a>
+                      <a routerLink='../lawyerhome'>EZLEGAL</a>
                   </li>
               </ul>
           </nav>   
@@ -73,267 +73,51 @@
                                       <th scope="col" class="last-post-col">Latest Post</th>
                                   </tr>
                               </thead>
-                              <tbody>
-                                  <tr>
+                              <tbody >
+                                  <tr *ngFor = "let forum of topics;paginate:{itemsPerPage:count, currentPage:p}">
                                       <td>
                                           <h3>
-                                              <span class="tag is-primary">
+                                              <!--<span class="tag is-primary">
                                                   7 unread
-                                              </span>
-                                              <a routerLink='../adpost' class="is-uppercase">
-                                                  Enquiry title A 
+                                              </span>-->
+                                              <a routerLink='../lawyerpost' (click)="handleClick(forum.forumId)" class="is-uppercase">
+                                                  {{forum.title}}
                                               </a>
                                           </h3>
-                                          <div class="is-small">
+                                          <!--<div class="is-small">
                                               Go to page :
                                               <a href="#0">1</a>, <a href="#0">2</a>, <a href="#0">3</a>, <a href="#0">4</a>, <a href="#0">5</a>,
                                               <a href="#0">6</a>, <a href="#0">7</a>, <a href="#0">8</a>, <a href="#0">9</a>, <a href="#0">10</a>
-                                          </div>
+                                          </div>-->
                                       </td>
                                       <td>
-                                          <div>by <a href="#">Author's name</a></div>
-                                          <div>10 October 2021</div>
+                                          <div>by <a href="#">{{forum.createdByName}}</a></div>
+                                          <div>{{forum.createdDt}}</div>
                                       </td>
                                       <td>
-                                          <div>5 replies</div>
-                                          <div>55 views</div>
+                                          <div>{{forum.post.length}} replies</div>
+                                          <div *ngIf="forum.post.length>0">by <a href="#0"></a></div>
+                                          <div *ngIf="forum.post.length==0"><a href="#0"></a></div>
                                       </td>
                                       <td>
-                                         <div>by <a href="#0">Author's name</a></div>
-                                          <div>10 October 2021</div>
+                                         <div *ngIf="forum.post.length>0">by <a href="#0"></a>{{forum.post[forum.post.length-1].postCreatedByName}}</div>
+                                         <div *ngIf="forum.post.length==0"><a href="#0"></a>No Post</div>
+                                         <div *ngIf="forum.post.length>0"><a href="#0"></a>{{forum.post[forum.post.length-1].postCreatedDt}}</div>
                                       </td>
+                              
                                   </tr>
-                                  <tr>
-                                      <td>
-                                          <h3>
-                                            <a href="#" class="is-uppercase">
-                                                  Enquiry title B 
-                                              </a>
-                                          </h3>
-                                      </td>
-                                      <td>
-                                          <div>by <a href="#">Author's name</a></div>
-                                          <div>10 October 2021</div>
-                                      </td>
-                                      <td>
-                                          <div>5 replies</div>
-                                          <div>55 views</div>
-                                      </td>
-                                      <td>
-                                         <div>by <a href="#0">Author's name</a></div>
-                                          <div>10 October 2021</div>
-                                      </td>
-                                  </tr>
-                                   <tr>
-                                      <td>
-                                          <h3>
-                                            <a href="#"  class="is-uppercase">
-                                                  Enquiry title C 
-                                              </a>
-                                          </h3>
-                                      </td>
-                                      <td>
-                                          <div>by <a href="#">Author's name</a></div>
-                                          <div>10 October 2021</div>
-                                      </td>
-                                      <td>
-                                          <div>5 replies</div>
-                                          <div>55 views</div>
-                                      </td>
-                                      <td>
-                                         <div>by <a href="#0">Author's name</a></div>
-                                          <div>10 October 2021</div>
-                                      </td>
-                                  </tr>
-                                   <tr>
-                                      <td>
-                                          <h3>
-                                            <a href="#"  class="is-uppercase">
-                                                  Enquiry title E 
-                                              </a>
-                                          </h3>
-                                      </td>
-                                      <td>
-                                          <div>by <a href="#">Author's name</a></div>
-                                          <div>10 October 2021</div>
-                                      </td>
-                                      <td>
-                                          <div>5 replies</div>
-                                          <div>55 views</div>
-                                      </td>
-                                      <td>
-                                         <div>by <a href="#0">Author's name</a></div>
-                                          <div>10 October 2021</div>
-                                      </td>
-                                  </tr> <tr>
-                                      <td>
-                                          <h3>
-                                            <a href="#"  class="is-uppercase">
-                                                  Enquiry title F 
-                                              </a>
-                                          </h3>
-                                      </td>
-                                      <td>
-                                          <div>by <a href="#">Author's name</a></div>
-                                          <div>10 October 2021</div>
-                                      </td>
-                                      <td>
-                                          <div>5 replies</div>
-                                          <div>55 views</div>
-                                      </td>
-                                      <td>
-                                         <div>by <a href="#0">Author's name</a></div>
-                                          <div>10 October 2021</div>
-                                      </td>
-                                  </tr>
-                                   <tr>
-                                      <td>
-                                          <h3>
-                                            <a href="#"  class="is-uppercase">
-                                                  Enquiry title G 
-                                              </a>
-                                          </h3>
-                                      </td>
-                                      <td>
-                                          <div>by <a href="#">Author's name</a></div>
-                                          <div>10 October 2021</div>
-                                      </td>
-                                      <td>
-                                          <div>5 replies</div>
-                                          <div>55 views</div>
-                                      </td>
-                                      <td>
-                                         <div>by <a href="#0">Author's name</a></div>
-                                          <div>10 October 2021</div>
-                                      </td>
-                                  </tr>
-                                   <tr>
-                                      <td>
-                                          <h3>
-                                            <a href="#"  class="is-uppercase">
-                                                  Enquiry title H 
-                                              </a>
-                                          </h3>
-                                      </td>
-                                      <td>
-                                          <div>by <a href="#">Author's name</a></div>
-                                          <div>10 October 2021</div>
-                                      </td>
-                                      <td>
-                                          <div>5 replies</div>
-                                          <div>55 views</div>
-                                      </td>
-                                      <td>
-                                         <div>by <a href="#0">Author's name</a></div>
-                                          <div>10 October 2021</div>
-                                      </td>
-                                  </tr>
-                                   <tr>
-                                      <td>
-                                          <h3>
-                                            <a href="#"  class="is-uppercase">
-                                                  Enquiry title I 
-                                              </a>
-                                          </h3>
-                                      </td>
-                                      <td>
-                                          <div>by <a href="#">Author's name</a></div>
-                                          <div>10 October 2021</div>
-                                      </td>
-                                      <td>
-                                          <div>5 replies</div>
-                                          <div>55 views</div>
-                                      </td>
-                                      <td>
-                                         <div>by <a href="#0">Author's name</a></div>
-                                          <div>10 October 2021</div>
-                                      </td>
-                                  </tr>
-                                   <tr>
-                                      <td>
-                                          <h3>
-                                            <a href="#"  class="is-uppercase">
-                                                  Enquiry title J 
-                                              </a>
-                                          </h3>
-                                      </td>
-                                      <td>
-                                          <div>by <a href="#">Author's name</a></div>
-                                          <div>10 October 2021</div>
-                                      </td>
-                                      <td>
-                                          <div>5 replies</div>
-                                          <div>55 views</div>
-                                      </td>
-                                      <td>
-                                         <div>by <a href="#0">Author's name</a></div>
-                                          <div>10 October 2021</div>
-                                      </td>
-                                  </tr>
-                                   <tr>
-                                      <td>
-                                          <h3>
-                                            <a href="#"  class="is-uppercase">
-                                                  Enquiry title K 
-                                              </a>
-                                          </h3>
-                                      </td>
-                                      <td>
-                                          <div>by <a href="#">Author's name</a></div>
-                                          <div>10 October 2021</div>
-                                      </td>
-                                      <td>
-                                          <div>5 replies</div>
-                                          <div>55 views</div>
-                                      </td>
-                                      <td>
-                                         <div>by <a href="#0">Author's name</a></div>
-                                          <div>10 October 2021</div>
-                                      </td>
-                                  </tr>
-                                   <tr>
-                                      <td>
-                                          <h3>
-                                            <a href="#"  class="is-uppercase">
-                                                  Enquiry title L 
-                                              </a>
-                                          </h3>
-                                      </td>
-                                      <td>
-                                          <div>by <a href="#">Author's name</a></div>
-                                          <div>10 October 2021</div>
-                                      </td>
-                                      <td>
-                                          <div>5 replies</div>
-                                          <div>55 views</div>
-                                      </td>
-                                      <td>
-                                         <div>by <a href="#0">Author's name</a></div>
-                                          <div>10 October 2021</div>
-                                      </td>
-                                  </tr>
-                             
-                              </tbody>
-                          </table>
+                                  
+                                </tbody>
+                            </table>
+                        </div>
+                        <nav class="pagination" role="navigation" aria-label="pagination">
+                          <ul class="pagination-list">
+                            <li *ngFor="let p of pages">
+                              <a class="pagination-link" aria-label="Page 1" (click)="getPage(p)"  (click)="showup()">{{p + 1}}</a>
+                            </li>
+                          </ul>
+                      </nav>
                       </div>
-                      <nav class="pagination" role="navigation" aria-label="pagination">
-                      <a class="pagination-previous" title="This is the first page" disabled>
-                        <b>Previous</b>
-                        </a>
-                        <a class="pagination-next"><b>Next</b></a>
-                        <ul class="pagination-list">
-                          <li>
-                            <a class="pagination-link is-current" aria-label="Page 1" aria-current="page">1</a>
-                          </li>
-                          <li>
-                            <a class="pagination-link" aria-label="Goto page 2">2</a>
-                          </li>
-                          <li>
-                            <a class="pagination-link" aria-label="Goto page 3">3</a>
-                          </li>
-                        </ul>
-                    </nav>
-                    </div>
                     <div class="column is-one-quarter-desktop">
                         <aside>
                             <div class="columns is-block-desktop">
@@ -398,7 +182,7 @@
                             </div>
                         </aside>
                     </div>
-                </div>
+                </div> 
           <!--Form-->
           <form id="sort-and-filter" class="is-flex-desktop">
               <div class="field is-flex-desktop">
@@ -454,7 +238,7 @@
                   </div>
               </div>
           </form>
-          <a routerLink='../adnewtopic' class="button is-large is-primary">
+          <a routerLink='../lawyertopic' class="button is-large is-primary">
               New Topic
           </a>
       </div>

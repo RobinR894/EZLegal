@@ -13,15 +13,15 @@
   
     <div id="navbarBasicExample" class="navbar-menu">
       <div class="navbar-start">
-        <a class="navbar-item" routerLink='../admin'>
+        <a class="navbar-item" routerLink='../lawyerhome'>
           Home
         </a>
-        <a class="navbar-item" routerLink='../adpost'>
-          User Management
+        <a class="navbar-item" routerLink='../'>
+          Services
         </a>
-        <a class="navbar-item" routerLink='../admininbox'>
-            Inbox
-          </a>
+        <a class="navbar-item" routerLink='../'>
+          Inbox
+        </a>
         <a class="navbar-item" routerLink='../adminsearch'>
           search
         </a>
@@ -46,13 +46,8 @@
     </div>
       <div class="navbar-end">
         <div class="navbar-item">
-          Admin /
-          <div class="buttons">
-            <a class="button is-light">
-              <strong><a routerLink='../home'>Log off</a></strong>
-            </a>
-          </div>
-        </div>
+         <div class="username">UserType:{{userDisplayType}}</div>
+                <strong> <button (click) ="deletecookies()">Log Off</button></strong></div>      
       </div>
     </div>
   </nav>
@@ -62,19 +57,19 @@
     <div class="container">
         <nav class="breadcrumb" aria-label="breadcrumbs">
             <ul>
-                <li><a routerLink='../admin'>EZLEGAL</a></li>
+                <li><a routerLink='../lawyerhome'>EZLEGAL</a></li>
                <li class="is-active">
                     <a href="#0" aria-current="page">{{topic.title}}</a>   
                 </li> 
             </ul>
         </nav>
         <h2 class="title">{{topic.title}}</h2>
-        <div *ngFor="let post of topic.post" class="table-responsive">
+        <div *ngFor="let post of posts" class="table-responsive">
             <table class="table is-striped is-bordered is-fullwidth">
                 <thead>
                     <tr>
                         <th scope="col">Author</th>
-                        <th scope="col">Message<ngb-rating [max]="5" [(rate)]="currentRating" [readonly]="true"></ngb-rating><h5>Current Rating: {{post.postRating}}</h5>
+                        <th scope="col">Message<br><ngb-rating [max]="5" [(rate)]="currentRating" [readonly]="false"></ngb-rating><h5>Current Rating: {{post.postRating}}</h5>
                          
                     </tr>
                 </thead>
@@ -117,20 +112,18 @@
             </table>
         </div>
                  
- <!--Pagination-->
- <nav class="pagination" role="navigation" aria-label="pagination">
-  <!--<a class="pagination-previous" title="This is the first page" disabled>
-    <b>Previous</b>
-    </a>-->
-    <!--<a class="pagination-next"><b>Next</b></a>-->
-    <ul *ngFor="let p of pages" class="pagination-list">
-      <li>
-        <a class="pagination-link is-current" aria-label="Page " aria-current="page" (click)="getPage(p)">{{p + 1}}</a>
-      </li>
-    </ul>
-</nav>
-
-<pagination-controls (pageChange)="getPage(page = $event)"></pagination-controls>
+     <!--Pagination-->
+     <nav class="pagination" role="navigation" aria-label="pagination">
+        <!--<a class="pagination-previous" title="This is the first page" disabled>
+          <b>Previous</b>
+          </a>-->
+          <!--<a class="pagination-next"><b>Next</b></a>-->
+          <ul class="pagination-list">
+            <li *ngFor="let p of pages">
+              <a class="pagination-link is-current" aria-label="Page " aria-current="page" (click)="getPage(p)"  (click)="showup()">{{p + 1}}</a>
+            </li>
+          </ul>
+      </nav>
     
     <!--Comment form-->
     <form id="reply" #replyTopicForm="ngForm" (ngSubmit) = "replyTopic(replyTopicForm)">

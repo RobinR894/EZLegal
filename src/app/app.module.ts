@@ -23,34 +23,19 @@ import { UserService } from './user.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { LawyerhomeComponent } from './lawyerhome/lawyerhome.component';
 import { UserhomeComponent } from './userhome/userhome.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { LawyerpostComponent } from './lawyerpost/lawyerpost.component';
+import { UserpostComponent } from './userpost/userpost.component';
+import { LawyertopicComponent } from './lawyertopic/lawyertopic.component';
+import { UsertopicComponent } from './usertopic/usertopic.component';
+import { TooltipModule } from 'ng2-tooltip-directive';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    ArrayOfComponents,
-    HomeComponent,
-    SignupComponent,
-    LoginComponent,
-    AdminComponent,
-    FilterPipe,
-    AdminusermanageComponent,
-    AdpostComponent,
-    AdnewtopicComponent,
-    AdmininboxComponent,
-    AdmininboxnmComponent,
-    AdminmessageComponent,
-    LawyerhomeComponent,
-    UserhomeComponent
+  declarations: [AppComponent,ArrayOfComponents,HomeComponent,SignupComponent,LoginComponent,AdminComponent,FilterPipe,AdminusermanageComponent,
+    AdpostComponent,AdnewtopicComponent,AdmininboxComponent,AdmininboxnmComponent,AdminmessageComponent,LawyerhomeComponent,UserhomeComponent, LawyerpostComponent, UserpostComponent, LawyertopicComponent, UsertopicComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    SlickCarouselModule,
-    HttpClientModule,
-    NgbModule,
-    ToastrModule.forRoot(),
-    BrowserAnimationsModule
+  imports: [BrowserModule,AppRoutingModule,FormsModule,SlickCarouselModule,HttpClientModule,NgbModule,ToastrModule.forRoot(),
+    BrowserAnimationsModule,NgxPaginationModule,TooltipModule
   ],
   providers: [UserService],
   bootstrap: [AppComponent]
