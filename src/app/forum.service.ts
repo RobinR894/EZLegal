@@ -15,8 +15,8 @@ import * as globalHeader from './login/login.component';
 
 //const forumUrl = 'http://localhost:58083/forum/'
 //const ratingUrl = 'http://localhost:58082/rating/'
-const forumUrl = 'http://ec2-54-254-5-106.ap-southeast-1.compute.amazonaws.com:58083/forum/'
-const ratingUrl = 'http://ec2-54-254-5-106.ap-southeast-1.compute.amazonaws.com:58082/rating/'
+const forumUrl = 'https://ec2-54-254-5-106.ap-southeast-1.compute.amazonaws.com:58083/forum/'
+const ratingUrl = 'https://ec2-54-254-5-106.ap-southeast-1.compute.amazonaws.com:58082/rating/'
 
 
 @Injectable({
