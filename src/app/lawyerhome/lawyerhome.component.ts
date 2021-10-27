@@ -8,12 +8,6 @@ import { ForumService } from '../forum.service';
 import { importType } from '@angular/compiler/src/output/output_ast';
 import { Topic } from '../topic.mode';
 
-var httpOptions = {
-	  headers: new HttpHeaders({
-		'Content-Type':  'application/json',
-		'sessionId': '{{usersessionId}}'
-	  })
-  };
 @Component({
   selector: 'app-lawyerhome',
   templateUrl: './lawyerhome.component.html',
@@ -22,7 +16,7 @@ var httpOptions = {
 })
 export class LawyerhomeComponent implements OnInit {
 userDisplayType = this.cookieService.get('role') ;
-usersessionId = this.cookieService.get('sessionId') ;
+
 
 forum:any[];
   title = 'EZLEGAL';
@@ -39,15 +33,9 @@ forum:any[];
       this.router.navigate(['/login']);
       this.cookieService.deleteAll();
     }
-    this.usersessionId = this.cookieService.get('sessionId') ;
-    console.log('lawyerhome session id' + this.usersessionId);
+   
     //alert(this.cookieService.get('role'));
-    httpOptions = {
-      headers: new HttpHeaders({
-      'Content-Type':  'application/json',
-      'sessionId': this.cookieService.get('sessionId')
-      })
-    };
+    
   }
   showup():void {
     window.scroll(0,0);
@@ -59,6 +47,7 @@ forum:any[];
       this.forum=data.forumList;
       this.topics = data.forumList.slice(0,10);
       this.populatePages(Math.floor((data.forumList.length/ 10) + 1));
+     
     });
   }
   private populatePages(total: number) {

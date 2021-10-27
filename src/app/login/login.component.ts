@@ -38,25 +38,26 @@ export class LoginComponent implements OnInit {
       });
   }
 loginSubmit(data:any)
-{ /*this.UserService.loginSubmit(this.login).subscribe(data=>{
+{ 
+  /*this.UserService.loginSubmit(this.login).subscribe(data=>{
   console.log(data);
+  alert(data.status.code)
   if(data.status === 500 ){ 
     console.log(data.status);
   alert("hello")
 }
-else if(data.status === 400 ){ 
+else if(data.status === 200 ){ 
   console.log(data.status);
 alert("ho")
 }
 })*/
   console.log('before submit login '+this.cookieService.get('sessionId'))
 
-  if((this.login.email = data.emailid) && (this.login.password = data.passwd))
-  {
+  /*if((this.login.email = data.emailid) && ( this.login["password"] = data.passwd))
+  {alert("hi")
   this.UserService.loginSubmit(this.login).subscribe(data=>{
     console.log(data);
     if(data.role == "lawyer"){
-      alert(data.status)
       this.cookieService.set( 'role', data.role,0.0517);
       this.cookieService.set( 'sessionId', data.sessionId);  // To Set Cookie
       httpOptions = {
@@ -68,7 +69,7 @@ alert("ho")
       this.router.navigate(['/lawyerhome']);
      }
       else if(data.role == "user"){ 
-      this.cookieService.set( 'role', data.role,0.0517);
+      this.cookieService.set( 'role', data.role,0.0517); // To Set Cookie and timer, 0.25=6hours ,1 = 24 hours, 2min=2/1440
       this.cookieService.set( 'sessionId', data.sessionId);
       httpOptions = {
         headers: new HttpHeaders({
@@ -76,25 +77,16 @@ alert("ho")
         'sessionId': this.cookieService.get('sessionId')
         })
       };
-      this.router.navigate(['/userhome']); // To Set Cookie and timer, 0.25=6hours ,1 = 24 hours, 2min=2/1440
+      this.router.navigate(['/userhome']); 
       }   
-      else if(data.status === 500){ 
-      alert(data.status)
-        }  
-  })
+  }
+  
+  )
 }
   
-  
- else if((this.login.email = data.emailid) && (this.login.password != data.passwd))
-  {
-    
-      this.router.navigate(['/login']);
-      alert("Email or password is not correct, please try again1");
-      location.reload();
-    }
   else{
     this.UserService.loginSubmit(this.login).subscribe(data=>{
-      if(data.status === 500 ){ 
+      if(data.error === 500 ){ 
         console.log(data)
         alert("Email or password is not correct, please try again2");
         location.reload();}
@@ -103,7 +95,41 @@ alert("ho")
     this.router.navigate(['/login']);
     alert("Email or password is not correct, please try again3");
     location.reload();
-   } })}
+   } 
+  })
+  }*/
+  this.login.email = data.emailid;
+  this.login["password"] = data.passwd;
+  this.UserService.loginSubmit(this.login).subscribe(data=>{
+    console.log(data)
+    if(typeof(data.status) == 'undefined') {
+      if(data.role == "lawyer"){
+        this.cookieService.set( 'role', data.role,0.0517);
+        this.cookieService.set( 'sessionId', data.sessionId);  // To Set Cookie
+        httpOptions = {
+          headers: new HttpHeaders({
+          'Content-Type':  'application/json',
+          'sessionId': this.cookieService.get('sessionId')
+          })
+        };
+        this.router.navigate(['/lawyerhome']);
+       }
+        else if(data.role == "user"){ 
+        this.cookieService.set( 'role', data.role,0.0517); // To Set Cookie and timer, 0.25=6hours ,1 = 24 hours, 2min=2/1440
+        this.cookieService.set( 'sessionId', data.sessionId);
+        httpOptions = {
+          headers: new HttpHeaders({
+          'Content-Type':  'application/json',
+          'sessionId': this.cookieService.get('sessionId')
+          })
+        };
+        this.router.navigate(['/userhome']); 
+        }   
+    } 
+    else{
+      location.reload();
+    }
+  })
 }
 
 }

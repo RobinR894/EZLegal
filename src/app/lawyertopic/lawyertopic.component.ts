@@ -8,14 +8,8 @@ import { HttpHeaders } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 import { UserService } from '../user.service';
+import * as globalHeader from '../login/login.component';
 
-
-var httpOptions = {
-  headers: new HttpHeaders({
-  'Content-Type':  'application/json',
-  'sessionId': '{{usersessionId}}'
-  })
-};
 @Component({
   selector: 'app-lawyertopic',
   templateUrl: './lawyertopic.component.html',
@@ -44,22 +38,16 @@ export class LawyertopicComponent implements OnInit {
       this.router.navigate(['/login']);
       this.cookieService.deleteAll();
     }
-    this.usersessionId = this.cookieService.get('sessionId') ;
-    console.log('lawyerhome session id' + this.usersessionId);
+  
     //alert(this.cookieService.get('role'));
-    httpOptions = {
-      headers: new HttpHeaders({
-      'Content-Type':  'application/json',
-      'sessionId': this.cookieService.get('sessionId')
-      })
-    };
+  
   }
 
   private resetForm(form?:NgForm){
     if(form!=null)
       form.reset();
     this.topic={};
-    this.post={forumId:0};
+    this.post={forumId:0, postRating: 0, userRating: 0};
   }
 
   async createTopic(form:NgForm){

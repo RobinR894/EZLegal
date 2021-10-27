@@ -64,19 +64,19 @@
             </ul>
         </nav>
         <h2 class="title">{{topic.title}}</h2>
-        <div *ngFor="let post of posts" class="table-responsive">
+        <div *ngFor="let post of posts; let i = index;" class="table-responsive">
             <table class="table is-striped is-bordered is-fullwidth">
                 <thead>
                     <tr>
                         <th scope="col">Author</th>
-                        <th scope="col">Message<br><ngb-rating [max]="5" [(rate)]="currentRating" [readonly]="false"></ngb-rating><h5>Current Rating: {{post.postRating}}</h5>
+                        <th scope="col">Message<br><ngb-rating [max]="5" [(rate)]="posts[i].postRating" [readonly]="true"></ngb-rating><h5>Current Rating: {{post.postRating}}<input type="text" id="textid" placeholder={{posts[i].postRating}} maxlength="1" size="2"><button>Rate</button></h5>
                          
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td class="author-col">
-                            <div>By <a href="#">{{post.postCreatedByName}}</a></div>
+                            <div>By {{post.postCreatedByName}}</div><br><ngb-rating [max]="5" [(rate)]="posts[i].userRating" [readonly]="true"></ngb-rating>Current Rating: {{post.userRating}}
                         </td>
                         <td class="post-col">
                             <div>

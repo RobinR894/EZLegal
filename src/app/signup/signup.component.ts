@@ -10,6 +10,7 @@ import { User } from '../user.model';
 import { NgForm } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 
+
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.html',
@@ -17,20 +18,19 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class SignupComponent implements OnInit {
   user:User;
-  emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
+  emailPattern = "^[A-Za-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
   //Minimum six characters, at least one letter and one number:
-  passPattern:any ="^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{6,}$";
-  namePattern:any = "^[a-zA-Z \-\']{2,}$";
+  passPattern:any ="^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{6,10}$";
+  namePattern:any = "^[a-zA-Z \-\']{2,20}$";
   reg:any = {};
   reglwy:any = {};
   // smartphone: any = [];
   headers: any;
   spresp: any;
   postdata: any;
-
+  email: any = {};
   constructor(private UserService: UserService, private router:Router, private toastr: ToastrService) {}
-  showSuccess() {
-    this.toastr.success('Hello world!', 'Toastr fun!');}
+    
   ngOnInit() {
    this.resetForm();
   }
@@ -45,43 +45,54 @@ export class SignupComponent implements OnInit {
     }
   }
   reglwySubmit(form:NgForm){
-    this.UserService.registerLawyerUser(form.value).
-    subscribe((data:any)=>{this.resetForm(form);
+    this.UserService.chkUser(form.value).
+    subscribe((data:any)=>{
+      console.log(data)
+    if (data.exist=="Y" ) {
+      alert("An account is already registered with your email address Please log in")
+      this.resetForm(form);
+    }
+    else{
+      this.UserService.registerLawyerUser(form.value).
+    subscribe((data:any)=>{
+      console.log(data)
+      this.resetForm(form);
       this.toastr.success('User registration successful');
-      if(data.Succeeded == true){
-        this.resetForm(form);
-        this.toastr.success('User registration successful');
-      }
-      else
-      this.toastr.error(data.Errors[0]);
+
+    });
+    }
+    })
+    
+  }
   
+regSubmit(form:NgForm){
+  this.UserService.chkUser(form.value).
+  subscribe((data:any)=>{
+    console.log(data)
+  if (data.exist=="Y" ) {
+    alert("An account is already registered with your email address Please log in")
+    this.resetForm(form);
+  }
+  else{
+
+    this.UserService.registerUser(form.value).
+    subscribe((data:any)=>{
+      console.log(data)
+     this.resetForm(form);
+     this.toastr.success('User registration successful');
+    
     });
   }
-  test():void {
-    alert("hr");
-  }
-regSubmit(form:NgForm){
- /* if(this.user.email == reg.email){
-  this.UserService.registerUser(form.value).subscribe((data:any)=>{
-  console.log(data);
-  if(data.exist == "Y")
-  {
-    alert("Y")
-  }
-  else if (data.exist == "N") {
-    alert("N")
-  }
-})}*/
-  this.UserService.registerUser(form.value).
-  subscribe((data:any)=>{
-   this.resetForm(form);
-   this.toastr.success('User registration successful');
-    if(this.user.email == data.email){
-      this.resetForm(form);
-      this.toastr.success('User registration failed');
-      alert('no')
-    }
-    else
-    this.toastr.error(data.Errors[0]);});
+  });
 }
+
+/*chkemail():void {
+  var email = $("#email").val();
+    alert(email);
+    this.UserService.chkUser(this.email).
+  subscribe((data:any)=>{
+    console.log(data)
+    alert(data.exist)
+  })
+}*/
 }

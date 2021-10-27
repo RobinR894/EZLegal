@@ -91,12 +91,12 @@
                                           </div>-->
                                       </td>
                                       <td>
-                                          <div>by <a href="#">{{forum.createdByName}}</a></div>
+                                          <div>by {{forum.createdByName}}</div>
                                           <div>{{forum.createdDt}}</div>
                                       </td>
                                       <td>
                                           <div>{{forum.post.length}} replies</div>
-                                          <div *ngIf="forum.post.length>0">by <a href="#0"></a></div>
+                                          <div *ngIf="forum.post.length>0"><a href="#0"></a></div>
                                           <div *ngIf="forum.post.length==0"><a href="#0"></a></div>
                                       </td>
                                       <td>

@@ -52,7 +52,7 @@ export class AdpostComponent implements OnInit {
     this.topic={
       post:[]
     };
-    this.post={forumId:0};
+    this.post={forumId:0, postRating: 0, userRating: 0};
   }
 
   private loadTopic() {

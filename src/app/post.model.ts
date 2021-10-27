@@ -8,6 +8,6 @@ export class Post {
   postCreatedById?: number;
   postCreatedByName?: string;
   postCount?: number;
-  postRating?: number;
-  userRating?: number;
+  postRating: number;
+  userRating: number;
 }

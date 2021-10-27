@@ -5,13 +5,8 @@ import { Router } from '@angular/router';
 import { UserService } from '../user.service';
 import { ForumService } from '../forum.service';
 import { HttpHeaders } from '@angular/common/http';
+import * as globalHeader from '../login/login.component';
 
-var httpOptions = {
-  headers: new HttpHeaders({
-  'Content-Type':  'application/json',
-  'sessionId': '{{usersessionId}}'
-  })
-};
 
 @Component({
   selector: 'app-userhome',
@@ -37,15 +32,9 @@ export class UserhomeComponent implements OnInit {
       this.router.navigate(['/login']);
       this.cookieService.deleteAll();
     }
-    this.usersessionId = this.cookieService.get('sessionId') ;
-    console.log('userhome session id' + this.usersessionId);
+
     //alert(this.cookieService.get('role'));
-    httpOptions = {
-      headers: new HttpHeaders({
-      'Content-Type':  'application/json',
-      'sessionId': this.cookieService.get('sessionId')
-      })
-    };
+   
   }
   showup():void {
     window.scroll(0,0);

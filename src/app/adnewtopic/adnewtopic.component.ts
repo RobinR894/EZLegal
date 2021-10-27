@@ -29,7 +29,7 @@ export class AdnewtopicComponent implements OnInit {
     if(form!=null)
       form.reset();
     this.topic={};
-    this.post={forumId:0};
+    this.post={forumId:0, postRating: 0, userRating: 0};
   }
 
   async createTopic(form:NgForm){

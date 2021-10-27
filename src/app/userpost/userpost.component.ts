@@ -8,13 +8,8 @@ import { Post } from '../post.model';
 import { ForumService } from '../forum.service';
 import { ToastrService } from 'ngx-toastr';
 import { HttpHeaders } from '@angular/common/http';
+import * as globalHeader from '../login/login.component';
 
-var httpOptions = {
-  headers: new HttpHeaders({
-  'Content-Type':  'application/json',
-  'sessionId': '{{usersessionId}}'
-  })
-};
 
 @Component({
   selector: 'app-userpost',
@@ -46,9 +41,8 @@ export class UserpostComponent implements OnInit {
   posts: Post[];
   page: number = 1;
   pages: number[];
-  
-  currentRating = 3;
-  constructor(private toastr: ToastrService,private ForumService: ForumService,private router:Router, private cookieService: CookieService,private UserService: UserService) { }
+ 
+  constructor(private toastr: ToastrService,private ForumService: ForumService,private router:Router, private cookieService: CookieService,private UserService: UserService) {}
 
   ngOnInit(): void {
     this.loadTopic();
@@ -58,16 +52,10 @@ export class UserpostComponent implements OnInit {
       this.router.navigate(['/login']);
       this.cookieService.deleteAll();
     }
-    this.usersessionId = this.cookieService.get('sessionId') ;
-    console.log('userhome session id' + this.usersessionId);
+  
     //alert(this.cookieService.get('role'));
-    httpOptions = {
-      headers: new HttpHeaders({
-      'Content-Type':  'application/json',
-      'sessionId': this.cookieService.get('sessionId')
-      })
-    };
-   
+  
+
   }
   private resetForm(form?:NgForm) {
     if(form!=null)
@@ -75,7 +63,7 @@ export class UserpostComponent implements OnInit {
     this.topic={
       post:[]
     };
-    this.post={forumId:0};
+    this.post={forumId:0, postRating: 0, userRating: 0};
   }
 
    private loadTopic() {
@@ -95,7 +83,7 @@ export class UserpostComponent implements OnInit {
     const body = {"forumId": this.ForumService.forumId, "content": form.value.comment};
     this.ForumService.createPost(body).subscribe((data:any) => {
       if (data.postId != null && data.postId != undefined) {
-        this.resetForm(form);
+        this.router.navigate(['/userhome']);
         this.toastr.success("Post created successfully");
       } else {
         this.toastr.error("Oops, we ran into an error");

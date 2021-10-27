@@ -8,13 +8,8 @@ import { Router } from '@angular/router';
 import { UserService } from '../user.service';
 import { ToastrService } from 'ngx-toastr';
 import { HttpHeaders } from '@angular/common/http';
+import * as globalHeader from '../login/login.component';
 
-var httpOptions = {
-  headers: new HttpHeaders({
-  'Content-Type':  'application/json',
-  'sessionId': '{{usersessionId}}'
-  })
-};
 @Component({
   selector: 'app-lawyerpost',
   templateUrl: './lawyerpost.component.html',
@@ -45,8 +40,7 @@ export class LawyerpostComponent implements OnInit {
   posts: Post[];
   page: number = 1;
   pages: number[];
-
-  currentRating = 3;
+  
   constructor(private toastr: ToastrService,private ForumService: ForumService,private router:Router, private cookieService: CookieService,private UserService: UserService) { }
 
   ngOnInit(): void {
@@ -57,15 +51,9 @@ export class LawyerpostComponent implements OnInit {
       this.router.navigate(['/login']);
       this.cookieService.deleteAll();
     }
-    this.usersessionId = this.cookieService.get('sessionId') ;
-    console.log('userhome session id' + this.usersessionId);
+   
     //alert(this.cookieService.get('role'));
-    httpOptions = {
-      headers: new HttpHeaders({
-      'Content-Type':  'application/json',
-      'sessionId': this.cookieService.get('sessionId')
-      })
-    };
+  
   }
   showup():void {
     window.scroll(0,0);
@@ -76,7 +64,7 @@ export class LawyerpostComponent implements OnInit {
     this.topic={
       post:[]
     };
-    this.post={forumId:0};
+    this.post={forumId:0, postRating: 0, userRating: 0};
   }
 
    private loadTopic() {
@@ -96,7 +84,7 @@ export class LawyerpostComponent implements OnInit {
     const body = {"forumId": this.ForumService.forumId, "content": form.value.comment};
     this.ForumService.createPost(body).subscribe((data:any) => {
       if (data.postId != null && data.postId != undefined) {
-        this.resetForm(form);
+        this.router.navigate(['/lawyerhome']);
         this.toastr.success("Post created successfully");
       } else {
         this.toastr.error("Oops, we ran into an error");
@@ -119,4 +107,5 @@ export class LawyerpostComponent implements OnInit {
     this.cookieService.deleteAll();
     this.router.navigate(['/home']);
   }
+  
 }

@@ -11,18 +11,13 @@ import { ForumTag } from './forum-tag.mode';
 import { CookieService } from 'ngx-cookie-service';
 import * as $ from 'jquery';
 import { Router } from '@angular/router';
+import * as globalHeader from './login/login.component';
 
-const forumUrl = 'http://localhost:58083/forum/'
-const ratingUrl = 'http://localhost:58082/rating/'
-//const forumUrl = 'http://ec2-54-254-5-106.ap-southeast-1.compute.amazonaws.com:58083/forum/'
-//const ratingUrl = 'http://ec2-54-254-5-106.ap-southeast-1.compute.amazonaws.com:58082/rating/'
+//const forumUrl = 'http://localhost:58083/forum/'
+//const ratingUrl = 'http://localhost:58082/rating/'
+const forumUrl = 'http://ec2-54-254-5-106.ap-southeast-1.compute.amazonaws.com:58083/forum/'
+const ratingUrl = 'http://ec2-54-254-5-106.ap-southeast-1.compute.amazonaws.com:58082/rating/'
 
-const httpOptions = {
-	headers: new HttpHeaders({
-		'Content-Type':  'application/json',
-		'sessionId': 'some value'
-	})
-};
 
 @Injectable({
 	providedIn: 'root'
@@ -33,7 +28,7 @@ export class ForumService {
 	constructor(private http: HttpClient,private router:Router, private cookieService: CookieService) { }
 
 	getForums(): Observable<any> {
-		return this.http.post<any>(forumUrl + 'forum/list', "{}", httpOptions)
+		return this.http.post<any>(forumUrl + 'forum/list', "{}", globalHeader.httpOptions)
 		.pipe(
 			catchError(this.handleError('getForums', "{}"))
 			);
@@ -43,22 +38,22 @@ export class ForumService {
 		const body: Topic = {
 			title: topic.title
 		}
-		return this.http.post(forumUrl + 'forum/add' ,body);
+		return this.http.post(forumUrl + 'forum/add' ,body, globalHeader.httpOptions);
 	}
 
-	createPost(post:Post) {
-		const body:Post = {
+	createPost(post:any) {
+		const body:any = {
 			forumId: post.forumId,
 			content : post.content
 		}
-		return this.http.post(forumUrl + 'post/add', body)
+		return this.http.post(forumUrl + 'post/add', body, globalHeader.httpOptions)
 	}
 
 	getTopic(forumId: number) {
 		const body = {
 			forumId: forumId
 		}
-		return this.http.post(forumUrl + 'forum/get', body)
+		return this.http.post(forumUrl + 'forum/get', body, globalHeader.httpOptions)
 	}
 
 	private handleError<T>(operation = 'operation', result?: T) {
