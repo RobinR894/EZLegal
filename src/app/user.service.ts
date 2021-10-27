@@ -15,11 +15,11 @@ const regUrl ='http://localhost:58080/user/user/adduser';
 const reglwyUrl ='http://localhost:58080/user/user/addlawyer';
 const chkregUrl ='http://localhost:58080/user/user/getbyemail';*/
 
-const forumlistUrl = 'https://ec2-54-254-5-106.ap-southeast-1.compute.amazonaws.com:58083/forum/forum/list';
-const loginUrl ='https://ec2-54-254-5-106.ap-southeast-1.compute.amazonaws.com:58080/user/user/login';
-const regUrl ='https://ec2-54-254-5-106.ap-southeast-1.compute.amazonaws.com:58080/user/user/adduser';
-const reglwyUrl ='https://ec2-54-254-5-106.ap-southeast-1.compute.amazonaws.com:58080/user/user/addlawyer';
-const chkregUrl ='https://ec2-54-254-5-106.ap-southeast-1.compute.amazonaws.com:58080/user/user/getbyemail';
+const forumlistUrl = 'https://cors-everywhere.herokuapp.com/http://ec2-13-212-188-97.ap-southeast-1.compute.amazonaws.com:58083/forum/forum/list';
+const loginUrl ='https://cors-everywhere.herokuapp.com/http://ec2-13-212-188-97.ap-southeast-1.compute.amazonaws.com:58080/user/user/login';
+const regUrl ='https://cors-everywhere.herokuapp.com/http://ec2-13-212-188-97.ap-southeast-1.compute.amazonaws.com:58080/user/user/adduser';
+const reglwyUrl ='https://cors-everywhere.herokuapp.com/http://ec2-13-212-188-97.ap-southeast-1.compute.amazonaws.com:58080/user/user/addlawyer';
+const chkregUrl ='https://cors-everywhere.herokuapp.com/http://ec2-13-212-188-97.ap-southeast-1.compute.amazonaws.com:58080/user/user/getbyemail';
 
 
 
@@ -30,13 +30,11 @@ export class UserService {
   //readonly regUrl ='http://localhost:58080/user/user/adduser';
   //readonly chkregUrl ='http://localhost:58080/user/user/getbyemail';
   //readonly reglwyUrl ='http://localhost:58080/user/user/addlawyer';
-  readonly regUrl ='https://ec2-54-254-5-106.ap-southeast-1.compute.amazonaws.com:58080/user/user/adduser';
-  readonly reglwyUrl ='https://ec2-54-254-5-106.ap-southeast-1.compute.amazonaws.com:58080/user/user/addlawyer';
-  readonly chkregUrl ='https://ec2-54-254-5-106.ap-southeast-1.compute.amazonaws.com:58080/user/user/getbyemail';
-  constructor(private http: HttpClient,private router:Router, private cookieService: CookieService) { 
+  readonly regUrl ='https://cors-everywhere.herokuapp.com/http://ec2-13-212-188-97.ap-southeast-1.compute.amazonaws.com:58080/user/user/adduser';
+  readonly reglwyUrl ='https://cors-everywhere.herokuapp.com/http://ec2-13-212-188-97.ap-southeast-1.compute.amazonaws.com:58080/user/user/addlawyer';
+  readonly chkregUrl ='https://cors-everywhere.herokuapp.com/http://ec2-13-212-188-97.ap-southeast-1.compute.amazonaws.com:58080/user/user/getbyemail';
 
-  }
-
+  constructor(private http: HttpClient,private router:Router, private cookieService: CookieService) {}
     getForums(): Observable<any> {
     return this.http.post<any>(forumlistUrl, "{}", globalHeader.httpOptions)
       .pipe(

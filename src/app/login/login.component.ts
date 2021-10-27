@@ -109,7 +109,8 @@ alert("ho")
         httpOptions = {
           headers: new HttpHeaders({
           'Content-Type':  'application/json',
-          'sessionId': this.cookieService.get('sessionId')
+          'sessionId': this.cookieService.get('sessionId'),
+          'Origin':'*'
           })
         };
         this.router.navigate(['/lawyerhome']);
@@ -120,7 +121,8 @@ alert("ho")
         httpOptions = {
           headers: new HttpHeaders({
           'Content-Type':  'application/json',
-          'sessionId': this.cookieService.get('sessionId')
+          'sessionId': this.cookieService.get('sessionId'),
+          'Origin':'*'
           })
         };
         this.router.navigate(['/userhome']); 
